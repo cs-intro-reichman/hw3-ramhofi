@@ -31,8 +31,9 @@ public class Algebra {
 			x1++;
 		} 
 	}
-		else {
-		for(int i = 0; i < -x2; i++) {
+		else if(x2 < 0) {
+			int absInt = Math.abs(x2);
+		for(int i = 0; i < absInt; i++) {
 			x1--;
 		}
 		}	
@@ -43,12 +44,13 @@ public class Algebra {
 	public static int minus(int x1, int x2) {
 		// Replace the following statement with your code
 		if(x2 > 0) {
-		for (int i = 0; i < x2; i++) {
-			x1--;
+			for (int i = 0; i < x2; i++) {
+				x1--;
 		}
 	}
-	else {
-		for (int i = 0; i < -x2; i++) {
+	else if(x2 < 0) {
+		int absInt = Math.abs(x2);
+		for (int i = 0; i < absInt; i++) {
 			x1++;	
 		}
 		}
