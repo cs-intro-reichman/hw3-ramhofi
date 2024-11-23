@@ -18,7 +18,7 @@ public class Algebra {
    		//System.out.println(div(25,7));   // 25 / 7
    		//System.out.println(mod(25,7));   // 25 % 7
    		//System.out.println(mod(120,6));  // 120 % 6    
-   		System.out.println(sqrt(36));
+   		//System.out.println(sqrt(36));
 		//System.out.println(sqrt(263169));
    		//System.out.println(sqrt(76123));
 	}  
@@ -59,9 +59,21 @@ public class Algebra {
 	public static int times(int x1, int x2) {
 		// Replace the following statement with your code
 		int x3 = 0;
+		boolean isNegative = false;
+
+		if(x2 < 0) {
+			x2 = minus(0, x2);
+			isNegative = true;
+		}
+
 		for(int i = 0; i < x2; i++) {
 			x3 = plus(x3,x1);
 		}
+		
+		if (isNegative) {
+			x3 = minus(0, x3);
+		}
+
 		return x3;
 	}
 
@@ -69,23 +81,54 @@ public class Algebra {
 	public static int pow(int x, int n) {
 		// Replace the following statement with your code
 		int x1 = 1;
+		if(n == 0){
+			x1 = 1;
+		}
+
+		if(n < 0) {
+			x1 = 0;
+		}
+
 		for(int i = 0; i < n; i++) {
 			x1 = times(x1, x);
 		}
+
 		return x1;
 	}
 
 	// Returns the integer part of x1 / x2 
 	public static int div(int x1, int x2) {
 		// Replace the following statement with your code
+		boolean isNegative = false;
+		if(x1 < 0 && x2 > 0) {
+			x1 = minus(0, x1);
+			isNegative = true;
+		}
+		
+		if (x1 > 0 && x2 < 0) {
+			x2 = minus(0, x2);
+			isNegative = true;
+		}
+
 		int count = 0;
 		int x3 = x1;
 		while(x3 >= x2) {
 			x3 = minus(x3, x2);
 			count++;
 		}
+
+		while(x3 <= x2) {
+			x3 = minus(x3, x2);
+			count++;
+		}
+
+			if (isNegative) {
+				count = minus(0, count);				
+			}
+
 		return count;
 	}
+
 
 	// Returns x1 % x2
 	public static int mod(int x1, int x2) {
