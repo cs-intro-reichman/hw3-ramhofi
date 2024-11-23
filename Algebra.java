@@ -48,7 +48,7 @@ public class Algebra {
 		}
 	}
 	else {
-		for (int i = 0; i < x2; i++) {
+		for (int i = 0; i < -x2; i++) {
 			x1++;	
 		}
 		}
