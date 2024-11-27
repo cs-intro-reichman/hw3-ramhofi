@@ -81,6 +81,6 @@ public class Anagram {
 			temp = temp.substring(0, index) + temp.substring(index+1);
 			random +=c;
 		}
-		return "";
+		return random;
 	}
 }
