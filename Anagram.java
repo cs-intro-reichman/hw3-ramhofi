@@ -37,6 +37,11 @@ public class Anagram {
 	// as is. For example, the string "What? No way!" becomes "whatnoway"
 	public static String preProcess(String str) {
 		// Replace the following statement with your code
+		for(int i = 0; i < str.length(); i++){
+			if (str.chatAt(i) > 91 ) {
+				
+			}
+		}
 		return "";
 	} 
 	   

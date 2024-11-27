@@ -26,20 +26,29 @@ public class LoanCalc {
 	}
 
 	// Computes the ending balance of a loan, given the loan amount, the periodical
-	// interest rate (as a percentage), the number of periods (n), and the periodical payment.
+	// interest rate (as a percentage), the number of periods (n), and the periodical payment. ארבעה ארגומנטים כמה נשאר לך להחזיר בסוף
 	private static double endBalance(double loan, double rate, int n, double payment) {	
 		// Replace the following statement with your code
-		return 0;
+		for(int i = 0; i < n; i++) {
+			loan = (loan - payment) * ((rate / 100) +1);
+		}
+		return loan;
 	}
 	
 	// Uses sequential search to compute an approximation of the periodical payment
 	// that will bring the ending balance of a loan close to 0.
 	// Given: the sum of the loan, the periodical interest rate (as a percentage),
 	// the number of periods (n), and epsilon, the approximation's accuracy
-	// Side effect: modifies the class variable iterationCounter.
+	// Side effect: modifies the class variable iterationCounter. להשתמש בפונקציה הקודמת. לעשות ניחוש לתשלום התחלתי. 
     public static double bruteForceSolver(double loan, double rate, int n, double epsilon) {
 		// Replace the following statement with your code
-		return 0;
+		iterationCounter = 0;
+		double guess = 0;
+		while (endBalance(loan, rate, n, guess) > 0) {
+			guess += epsilon;
+			iterationCounter ++;
+		}
+		return guess;
     }
     
     // Uses bisection search to compute an approximation of the periodical payment 
@@ -49,6 +58,20 @@ public class LoanCalc {
 	// Side effect: modifies the class variable iterationCounter.
     public static double bisectionSolver(double loan, double rate, int n, double epsilon) {  
         // Replace the following statement with your code
-		return 0;
+		iterationCounter = 0;
+		double lowGuess = 0;
+		double highGuess = loan;
+		double mid = (highGuess + lowGuess) / 2;
+		while (highGuess - lowGuess > epsilon) {
+			if (endBalance(loan, rate, n, mid) > 0) {
+			lowGuess = mid;	
+			} 
+			else {
+				highGuess = mid;
+			}
+			mid = (highGuess + lowGuess) / 2;
+			iterationCounter ++;
+		}
+		return mid;
     }
 }
