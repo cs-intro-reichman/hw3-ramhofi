@@ -43,7 +43,7 @@ public class LoanCalc {
     public static double bruteForceSolver(double loan, double rate, int n, double epsilon) {
 		// Replace the following statement with your code
 		iterationCounter = 0;
-		double guess = 0;
+		double guess = loan / n;
 		while (endBalance(loan, rate, n, guess) > 0) {
 			guess += epsilon;
 			iterationCounter ++;
@@ -59,7 +59,7 @@ public class LoanCalc {
     public static double bisectionSolver(double loan, double rate, int n, double epsilon) {  
         // Replace the following statement with your code
 		iterationCounter = 0;
-		double lowGuess = 0;
+		double lowGuess = loan / n;
 		double highGuess = loan;
 		double mid = (highGuess + lowGuess) / 2;
 		while (highGuess - lowGuess > epsilon) {
